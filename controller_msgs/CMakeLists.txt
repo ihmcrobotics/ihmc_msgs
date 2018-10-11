@@ -157,6 +157,7 @@ find_package(catkin REQUIRED COMPONENTS
    TrajectoryPoint1DMessage.msg
    UIConnectedPacket.msg
    UIPositionCheckerPacket.msg
+   ValkyrieHandFingerTrajectoryMessage.msg
    ValveLocationPacket.msg
    VehiclePosePacket.msg
    VideoPacket.msg
