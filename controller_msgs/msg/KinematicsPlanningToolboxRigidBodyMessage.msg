@@ -1,32 +1,15 @@
+# This message is part of the IHMC whole-body inverse kinematics module.
 # Unique ID used to identify this message, should preferably be consecutively increasing.
 uint32 sequence_id
 
-# The is the unique hash code of the end-effector to be solved for.
-# It is used on the solver side to retrieve the desired end-effector to be controlled.
-# See RigidBody.hashCode() for the computation of a rigid-body hash code.
 int32 end_effector_hash_code
 
-# This is the desired position of the control frame's origin.
-# If the control frame has not been defined, it represents the desired position endEffector.getBodyFixedFrame().
-# The data is assumed to be expressed in world frame.
-geometry_msgs/Point desired_position_in_world
+# This is the list of desired times for each key frames.
+float64[] key_frame_times
 
-# This is the desired orientation of the control frame.
-# I the control frame has not been defined, it represents the desired orientation of endEffector.getBodyFixedFrame().
-# The data is assumed to be expressed in world frame.
-geometry_msgs/Quaternion desired_orientation_in_world
+# This is the list of desired key frames for end effector.
+geometry_msgs/Pose[] key_frame_poses
 
-# This is the position of the control frame's origin expressed in endEffector.getBodyFixedFrame().
-# By default, the control frame is coincident to endEffector.getBodyFixedFrame().
-# The control frame is rigidly attached to the end-effector.
-geometry_msgs/Point control_frame_position_in_end_effector
-
-# This is the orientation of the control frame expressed in endEffector.getBodyFixedFrame().
-# By default, the control frame is coincident to endEffector.getBodyFixedFrame().
-geometry_msgs/Quaternion control_frame_orientation_in_end_effector
-
-# The selection matrix is used to determinate which degree of freedom of the end-effector should
-# be controlled.
 # The selection frames coming along with the given selection matrix are used to determine to
 # what reference frame the selected axes are referring to. For instance, if only the hand height
 # in world should be controlled on the linear z component of the selection matrix should be
@@ -50,5 +33,24 @@ controller_msgs/WeightMatrix3DMessage angular_weight_matrix
 
 # Weight matrix used to define the priority of controlling the translation around each axis on the solver side.
 controller_msgs/WeightMatrix3DMessage linear_weight_matrix
+
+# This is the position of the control frame's origin expressed in endEffector.getBodyFixedFrame().
+# By default, the control frame is coincident to endEffector.getBodyFixedFrame().
+# The control frame is rigidly attached to the end-effector.
+geometry_msgs/Point control_frame_position_in_end_effector
+
+# This is the orientation of the control frame expressed in endEffector.getBodyFixedFrame().
+# By default, the control frame is coincident to endEffector.getBodyFixedFrame().
+geometry_msgs/Quaternion control_frame_orientation_in_end_effector
+
+# This is the allowable displacement of the position for each key frame.
+# By default, the solver will try to find a solution without modifying the position of the key frames.
+# When a positive value is provided, the solver may adjust a key frame to improve the overall solution quality.
+float64[] allowable_position_displacement
+
+# This is the allowable displacement of the orientation for each key frame.
+# By default, the solver will try to find a solution without modifying the orientation of the key frames.
+# When a positive value is provided, the solver may adjust a key frame to improve the overall solution quality.
+float64[] allowable_orientation_displacement
 
 
