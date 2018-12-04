@@ -132,6 +132,7 @@ find_package(catkin REQUIRED COMPONENTS
    QuadrupedBodyHeightMessage.msg
    QuadrupedBodyOrientationMessage.msg
    QuadrupedBodyPathPlanMessage.msg
+   QuadrupedBodyTrajectoryMessage.msg
    QuadrupedFootstepStatusMessage.msg
    QuadrupedGroundPlaneMessage.msg
    QuadrupedRequestedSteppingStateMessage.msg
